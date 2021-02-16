@@ -1,0 +1,11 @@
+{
+  "dataset": "div2k/unknown_x2",
+  "epochs":1000,
+  "blocks":4,
+  "channel" : 128,
+  "learning_rate" : 1e-04,
+  "decay_steps" : 48000,
+  "decay_rate" : 0.5,
+  "resume": false,
+  "crop": 128
+}
