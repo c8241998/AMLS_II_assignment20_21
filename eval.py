@@ -6,7 +6,7 @@ os.environ["CUDA_VISIBLE_DEVICES"]="0"
 
 if __name__=='__main__':
 
-    config = read_config() 
+    config = read_config()
     scale = int(config['dataset'][-1:])
     checkpoint_path = 'checkpoint/' + config['dataset'][-10:] + '/model'
 
