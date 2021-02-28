@@ -1,5 +1,5 @@
 {
-  "dataset": "div2k/unknown_x2",
+  "dataset": "div2k/bicubic_x2",
   "epochs":1000,
   "blocks":4,
   "channel" : 128,

@@ -5,7 +5,7 @@ import os
 from utils import *
 from model import MyModel
 import datetime
-os.environ["CUDA_VISIBLE_DEVICES"]="7,6,5,4,3,2,1"
+os.environ["CUDA_VISIBLE_DEVICES"]="0,7,6,5,4,3,2,1"
 
 if __name__=='__main__':
 
@@ -29,7 +29,6 @@ if __name__=='__main__':
     model.compile(
         optimizer=tf.keras.optimizers.Adam(learning_rate=lr_schedule),
         loss= Loss(),
-        # loss = tf.keras.losses.mean_absolute_error,
         metrics=[PSNR(),SSIM()],
     )
 

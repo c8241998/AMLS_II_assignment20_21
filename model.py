@@ -22,8 +22,10 @@ class MyModel(Model):
     self.deconv = Conv2DTranspose(filters=channel, kernel_size=[scale, scale], strides=[scale, scale], padding="valid", activation="relu")
     self.conv1 = Conv2D(filters=channel, kernel_size=[3, 3], strides=[1, 1],padding="same",activation="relu")
     self.conv2 = Conv2D(filters=channel, kernel_size=[3, 3], strides=[1, 1], padding="same", activation="relu")
-    self.conv3 = Conv2D(filters=3, kernel_size=[3, 3], strides=[1, 1], padding="same", activation="relu")
-    self.conv4 = Conv2D(filters=3, kernel_size=[3, 3], strides=[1, 1], padding="same", activation="relu")
+    self.conv3 = Conv2D(filters=channel, kernel_size=[3, 3], strides=[1, 1], padding="same", activation="relu")
+    self.conv4 = Conv2D(filters=channel, kernel_size=[3, 3], strides=[1, 1], padding="same", activation="relu")
+    self.conv5 = Conv2D(filters=3, kernel_size=[3, 3], strides=[1, 1], padding="same", activation="relu")
+    self.conv6 = Conv2D(filters=3, kernel_size=[3, 3], strides=[1, 1], padding="same", activation="relu")
     self.resblocks1 = [ResBlock(channel) for i in range(blocks)]
     self.resblocks2 = [ResBlock(channel) for i in range(blocks)]
     self.cbam = CBAM()
@@ -36,15 +38,20 @@ class MyModel(Model):
           x = resblock(x)
       x = self.conv2(x)
       x = shortcut + x
+
       x = self.deconv(x)
       x = self.cbam(x)
 
+      x=self.conv3(x)
       shortcut = x
       for resblock in self.resblocks2:
           x = resblock(x)
+      x=self.conv4(x)
       x = shortcut + x
 
-      x1 = self.conv3(x)
-      x2 = self.conv4(x)
+
+      x1 = self.conv5(x)
+      x2 = self.conv6(x)
       x= tf.concat([x1,x2],axis=-1)
+
       return x

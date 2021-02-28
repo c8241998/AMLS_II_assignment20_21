@@ -2,7 +2,7 @@ from dataset import data
 import os
 from utils import *
 from model import MyModel
-os.environ["CUDA_VISIBLE_DEVICES"]="0"
+os.environ["CUDA_VISIBLE_DEVICES"]="3"
 
 if __name__=='__main__':
 

@@ -2,14 +2,6 @@ import tensorflow_datasets as tfds
 import tensorflow as tf
 from utils import read_config
 
-# def normalize_train(lr,hr):
-#     lr,hr = tf.expand_dims(lr, axis=0),tf.expand_dims(hr, axis=0)
-#     lr,hr = tf.image.resize(lr, [128, 128]), tf.image.resize(hr, [128*3, 128*3])
-#     lr,hr = tf.squeeze(lr), tf.squeeze(hr)
-#     lr = tf.cast(lr, tf.float32) / 255.
-#     hr = tf.cast(hr, tf.float32) / 255.
-#     return  lr,hr
-
 def normalize(lr,hr):
     lr = tf.cast(lr, tf.float32)/255.
     hr = tf.cast(hr, tf.float32)/255.

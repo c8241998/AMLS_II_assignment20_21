@@ -8,7 +8,7 @@ class PSNR(tf.keras.metrics.Metric):
         self.count = self.add_weight(name='count', initializer='zeros')
 
     def update_state(self, y_true, y_pred,sample_weight=None):
-        psnr_ = tf.reduce_mean(tf.image.psnr(y_true, (y_pred[:,:,:,:3]+y_pred[:,:,:,3:])/2., max_val=1.0))
+        psnr_ = tf.reduce_mean(tf.image.psnr(y_true, (y_pred[:, :, :, :3] + y_pred[:, :, :, 3:]) / 2., max_val=1.0))
         self.psnr.assign_add(psnr_)
         self.count.assign_add(1)
 
@@ -24,7 +24,7 @@ class SSIM(tf.keras.metrics.Metric):
         self.count = self.add_weight(name='count', initializer='zeros')
 
     def update_state(self, y_true, y_pred,sample_weight=None):
-        ssim_ = tf.reduce_mean(tf.image.ssim((y_pred[:,:,:,:3]+y_pred[:,:,:,3:])/2., y_true, 1.0))
+        ssim_ = tf.reduce_mean(tf.image.ssim((y_pred[:, :, :, :3] + y_pred[:, :, :, 3:]) / 2., y_true, 1.0))
         self.ssim.assign_add(ssim_)  # output is 4x1 array
         self.count.assign_add(1)
 
@@ -36,7 +36,7 @@ class Loss(tf.keras.losses.Loss):
   def call(self, y_true, y_pred):
       ssim = tf.reduce_mean(tf.image.ssim(y_true, y_pred[:,:,:,:3], 1.0))
       psnr = tf.reduce_mean(tf.image.psnr(y_true, y_pred[:,:,:,3:6], max_val=1.0))
-      return - ( ssim + psnr/30 )
+      return - ( ssim + psnr/30.  )
 
 def read_config():
     import json
