@@ -7,7 +7,6 @@ In this paper, we have developed a novel deep super-resolution network. In parti
 <br>
 
 CBAM Block:
-![image](img/attention.png)  
 ![image](img/cbam.png)  
 
 
