@@ -18,10 +18,13 @@ CBAM Block:
 
 ## Running
 Before running the code, you need `pip install tensorflow_datasets`.
-The dataset DIV2K will be prepared automatically by the library `tensorflow_datasets`
+The dataset of DIV2K will be prepared automatically by the library `tensorflow_datasets`
 
 To run the training pipeline, you just need `python main.py`
-	
+
+To change the running track, you just need to update the dataset name in `config.json`
+
+Optional datasets: `div2k/bicubic_x2` `div2k/bicubic_x3` `div2k/bicubic_x4` `div2k/unknown_x2` `div2k/unknown_x3` `div2k/unknown_x4`
 
 ## Results
 
