@@ -1,6 +1,6 @@
-import tensorflow as tf
+# the main entrance of the training pipeline
+
 from dataset import data
-import tensorflow_hub as hub
 import os
 from utils import *
 from model import MyModel
@@ -59,12 +59,3 @@ if __name__=='__main__':
 
     # model summary
     print(model.summary())
-
-
-
-    # model = tf.keras.models.Sequential([
-    #     tf.keras.layers.Conv2DTranspose(filters=128,kernel_size=[scale,scale],strides=[scale,scale],padding="valid",activation="relu"),
-    #     tf.keras.layers.Conv2D(filters=128, kernel_size=[3, 3], strides=[1, 1],padding="same",activation="relu"),
-    #     tf.keras.layers.Conv2D(filters=128, kernel_size=[3, 3], strides=[1, 1],padding="same",activation="relu"),
-    #     tf.keras.layers.Conv2D(filters=3, kernel_size=[3, 3], strides=[1, 1],padding="same",activation="relu"),
-    # ])

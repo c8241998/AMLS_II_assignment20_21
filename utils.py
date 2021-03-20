@@ -31,6 +31,7 @@ class SSIM(tf.keras.metrics.Metric):
     def result(self):
         return self.ssim / self.count
 
+# the joint loss
 class Loss(tf.keras.losses.Loss):
 
   def call(self, y_true, y_pred):
@@ -38,6 +39,7 @@ class Loss(tf.keras.losses.Loss):
       psnr = tf.reduce_mean(tf.image.psnr(y_true, y_pred[:,:,:,3:6], max_val=1.0))
       return - ( ssim + psnr/30.  )
 
+# read training cofiguration
 def read_config():
     import json
     with open("config.json", 'r') as load_f:

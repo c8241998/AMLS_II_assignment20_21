@@ -1,8 +1,11 @@
+# cbam model
+
 import keras.backend as K
 import keras.layers as KL
 from tensorflow.keras.layers import Layer
 from tensorflow.keras import Model
 
+# channel attention block in CBAM
 class Channel_attention(Layer):
     def __init__(self):
         super(Channel_attention, self).__init__()
@@ -40,6 +43,7 @@ class Channel_attention(Layer):
         channel_attention_feature = self.sigmoid(channel_attention_feature)
         return KL.Multiply()([channel_attention_feature, input_xs])
 
+# spatial attention block in CBAM
 class Spatial_attention(Layer):
     def __init__(self):
         super(Spatial_attention, self).__init__()
@@ -54,6 +58,7 @@ class Spatial_attention(Layer):
         max_avg_pool_spatial = self.cat([maxpool_spatial, avgpool_spatial])
         return self.conv(max_avg_pool_spatial)
 
+# CBAM model definition
 class CBAM(Model):
     def __init__(self):
         super(CBAM, self).__init__()
