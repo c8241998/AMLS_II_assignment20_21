@@ -1,4 +1,4 @@
-# AMLS_II_assignment20_21
+# Single_Image_Super_Resolution
 In this paper, we have developed a novel deep super-resolution network. In particular, the residual learning techniques has been used to design a deeper network and make the backbone more powerful. We design two generating branches at the end of the model in a multi-task learning fashion, which are optimized with a joint loss of SSIM and PSNR. Also, a CBAM attention block has been used to adaptively improve the feature extraction where the local details are hard to restore. Lastly, the data augmentation trick helps us to generate more training samples. The proposed method shows competitive performance on the benchmark dataset and proves its excellence compared with other models in the NTIRE2017 Super-Resolution Challenge.
 
 ## Model
